@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://0bbnc6ojjbu4"]
+
+[ext_resource type="Script" path="res://scripts/message.gd" id="1_lr77t"]
+[ext_resource type="Texture2D" uid="uid://csnjr0q5bcljp" path="res://assets/textures/message_decal.png" id="2_1v0n8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jfsuo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gf86y"]
+
+[node name="StaticBody3D2" type="StaticBody3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_lr77t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_jfsuo")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0678499, 0)
+size = Vector3(1, 0.225097, 0.870239)
+texture_albedo = ExtResource("2_1v0n8")
+texture_emission = ExtResource("2_1v0n8")
+emission_energy = 2.0
+modulate = Color(1, 0.501961, 0, 1)
+albedo_mix = 0.3
+cull_mask = 1048574
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125206, 0)
+light_color = Color(1, 0.501961, 0, 1)
+light_energy = 0.5
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_gf86y")

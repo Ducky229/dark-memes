@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://igd3emo8ltyc"]
+
+[ext_resource type="Texture2D" uid="uid://csnjr0q5bcljp" path="res://assets/textures/message_decal.png" id="1_qmlsu"]
+[ext_resource type="Script" path="res://scripts/message.gd" id="1_thmar"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jfsuo"]
+
+[node name="StaticBody3D2" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00783, 0.219994, -1.90958)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_thmar")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_jfsuo")
+
+[node name="Decal" type="Decal" parent="."]
+size = Vector3(1, 1.0957, 0.870239)
+texture_albedo = ExtResource("1_qmlsu")

@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://cfwanaoj36yty"]
+
+[sub_resource type="Curve" id="Curve_q7ujd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_d8d8y"]
+curve = SubResource("Curve_q7ujd")
+
+[sub_resource type="Gradient" id="Gradient_lx1jp"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7wbat"]
+gradient = SubResource("Gradient_lx1jp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uoyxq"]
+lifetime_randomness = 0.6
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(1, 1, 1)
+gravity = Vector3(0, -2, 0)
+scale_min = 0.2
+scale_max = 0.4
+color_ramp = SubResource("GradientTexture1D_7wbat")
+alpha_curve = SubResource("CurveTexture_d8d8y")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.9
+
+[sub_resource type="Gradient" id="Gradient_y8yh7"]
+offsets = PackedFloat32Array(0, 0.425121)
+colors = PackedColorArray(0.201527, 0.201527, 0.201527, 1, 0.29219, 0.29219, 0.29219, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t87mx"]
+gradient = SubResource("Gradient_y8yh7")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuud4"]
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_t87mx")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ye7o5"]
+material = SubResource("StandardMaterial3D_fuud4")
+
+[sub_resource type="GDScript" id="GDScript_m5sqx"]
+script/source = "extends GPUParticles3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	set(\"emitting\", true)
+
+func _on_finished():
+	queue_free()
+"
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+emitting = false
+amount = 64
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource("ParticleProcessMaterial_uoyxq")
+draw_pass_1 = SubResource("QuadMesh_ye7o5")
+script = SubResource("GDScript_m5sqx")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
