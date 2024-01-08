@@ -1,0 +1,189 @@
+[gd_scene load_steps=26 format=3 uid="uid://wesv46s6026e"]
+
+[ext_resource type="Script" path="res://scripts/SceneManager.gd" id="1_aavsv"]
+[ext_resource type="PackedScene" uid="uid://djs1xcwb07a5v" path="res://scenes/entities/player.tscn" id="2_w35y5"]
+[ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assets/textures/grids/Dark/texture_05.png" id="3_loipk"]
+[ext_resource type="Texture2D" uid="uid://b58xv1joypxo5" path="res://assets/textures/grids/Orange/texture_09.png" id="4_r62lu"]
+[ext_resource type="Texture2D" uid="uid://cm5m7nr7dugjd" path="res://assets/textures/grids/Purple/texture_09.png" id="5_s8rb4"]
+[ext_resource type="Texture2D" uid="uid://dyshw81wmob45" path="res://assets/textures/grids/Green/texture_10.png" id="6_30slf"]
+[ext_resource type="PackedScene" uid="uid://0bbnc6ojjbu4" path="res://scenes/entities/message.tscn" id="7_alt4v"]
+[ext_resource type="Texture2D" uid="uid://csvnop4qiydrp" path="res://assets/textures/grids/Dark/texture_13.png" id="8_0tno0"]
+[ext_resource type="Texture2D" uid="uid://dmuldpkk0waic" path="res://assets/textures/grids/Dark/texture_03.png" id="9_66p60"]
+[ext_resource type="Texture2D" uid="uid://dswhegq2cyu0" path="res://assets/textures/flag.png" id="9_858bv"]
+[ext_resource type="PackedScene" uid="uid://cl4hhuntx7jk5" path="res://scenes/entities/fakeWall.tscn" id="10_ni6q6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5kbj0"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_0phqf"]
+sky_material = SubResource("ProceduralSkyMaterial_5kbj0")
+
+[sub_resource type="Environment" id="Environment_3qpo8"]
+background_mode = 2
+sky = SubResource("Sky_0phqf")
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.435294, 0.435294, 0.435294, 1)
+fog_density = 0.0025
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_foyjr"]
+albedo_texture = ExtResource("3_loipk")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic4hm"]
+albedo_texture = ExtResource("4_r62lu")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vs6u4"]
+albedo_texture = ExtResource("5_s8rb4")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ncqih"]
+albedo_texture = ExtResource("6_30slf")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7x1js"]
+albedo_texture = ExtResource("8_0tno0")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbfkf"]
+albedo_texture = ExtResource("8_0tno0")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykuxd"]
+albedo_texture = ExtResource("9_66p60")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhpyo"]
+albedo_texture = ExtResource("9_66p60")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eo8lc"]
+albedo_texture = ExtResource("9_66p60")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f2s8s"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("9_858bv")
+disable_receive_shadows = true
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_2guah"]
+material = SubResource("StandardMaterial3D_f2s8s")
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_aavsv")
+PlayerScene = ExtResource("2_w35y5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3qpo8")
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Geometry" type="Node3D" parent="Map"]
+
+[node name="Floor" type="CSGBox3D" parent="Map/Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+layers = 3
+material_override = SubResource("StandardMaterial3D_foyjr")
+use_collision = true
+collision_layer = 5
+collision_mask = 4
+size = Vector3(1000, 1, 1000)
+
+[node name="Boxes" type="Node3D" parent="Map/Geometry"]
+
+[node name="OrangeBox" type="CSGBox3D" parent="Map/Geometry/Boxes"]
+transform = Transform3D(0.829915, 0, 0.55789, 0, 1, 0, -0.55789, 0, 0.829915, -5.38717, 0.5, -0.797019)
+material_override = SubResource("StandardMaterial3D_ic4hm")
+use_collision = true
+collision_layer = 3
+
+[node name="BlueBox" type="CSGBox3D" parent="Map/Geometry/Boxes"]
+transform = Transform3D(0.92645, 0, -0.376418, 0, 1, 0, 0.376418, 0, 0.92645, -0.513381, 1, -8.31491)
+material_override = SubResource("StandardMaterial3D_vs6u4")
+use_collision = true
+collision_layer = 3
+size = Vector3(2, 2, 2)
+
+[node name="GreenBox" type="CSGBox3D" parent="Map/Geometry/Boxes"]
+transform = Transform3D(-0.499108, 0, -0.86654, 0, 1, 0, 0.86654, 0, -0.499108, 6.1336, 1.5, -6.07825)
+material_override = SubResource("StandardMaterial3D_ncqih")
+use_collision = true
+collision_layer = 3
+size = Vector3(3, 3, 3)
+
+[node name="Tunnel" type="Node3D" parent="Map/Geometry"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 4)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Geometry/Tunnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99023, 1.25, 2.5)
+use_collision = true
+size = Vector3(8, 2.5, 1)
+material = SubResource("StandardMaterial3D_7x1js")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Geometry/Tunnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.96277, 1.25, 6.5)
+use_collision = true
+size = Vector3(8, 2.5, 1)
+material = SubResource("StandardMaterial3D_nbfkf")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Map/Geometry/Tunnel"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -3, 2.85577, 5.93263)
+use_collision = true
+size = Vector3(8, 2, 1)
+material = SubResource("StandardMaterial3D_ykuxd")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Map/Geometry/Tunnel"]
+transform = Transform3D(-1, 1.0677e-07, -1.0677e-07, 0, 0.707107, 0.707107, 1.50996e-07, 0.707107, -0.707107, -3, 2.85577, 3.07412)
+use_collision = true
+size = Vector3(8, 2, 1)
+material = SubResource("StandardMaterial3D_vhpyo")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Map/Geometry/Tunnel"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.98132, 3.4135, 4.5049)
+use_collision = true
+size = Vector3(8, 2.1416, 1)
+material = SubResource("StandardMaterial3D_eo8lc")
+
+[node name="Entities" type="Node3D" parent="Map"]
+
+[node name="SpawnPoints" type="Node3D" parent="Map/Entities"]
+
+[node name="0" type="Node3D" parent="Map/Entities/SpawnPoints" groups=["PlayerSpawnPoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="Spawn" type="MeshInstance3D" parent="Map/Entities/SpawnPoints/0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+layers = 524288
+mesh = SubResource("QuadMesh_2guah")
+
+[node name="1" type="Node3D" parent="Map/Entities/SpawnPoints" groups=["PlayerSpawnPoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Spawn" type="MeshInstance3D" parent="Map/Entities/SpawnPoints/1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+layers = 524288
+mesh = SubResource("QuadMesh_2guah")
+
+[node name="SecretDoor" parent="Map/Entities" instance=ExtResource("10_ni6q6")]
+
+[node name="Message" parent="Map/Entities" instance=ExtResource("7_alt4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 6.5)

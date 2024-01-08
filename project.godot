@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="tps tutor 2"
-run/main_scene="res://scenes/multiplayer_scene.tscn"
+run/main_scene="res://scenes/levels/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/textures/icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://assets/audio/default_bus_layout.tres"
 
 [autoload]
 
-GameManager="*res://GameManager.gd"
+GameManager="*res://scripts/GameManager.gd"
+FastMethods="*res://scripts/FastMethods.gd"
 
 [dotnet]
 

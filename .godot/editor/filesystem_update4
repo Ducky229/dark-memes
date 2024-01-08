@@ -6,3 +6,17 @@ res://scenes/wall_disappear_particles.tscn
 res://scenes/static_body_3d_2.tscn
 res://scripts/player.gd
 res://scripts/SceneManager.gd
+res://GameManager.gd
+res://scenes/chest.tscn
+res://scripts/chest.gd
+res://FastMethods.gd
+res://scripts/StaticBody3D4.gd
+res://scenes/message.tscn
+res://scenes/levels/main.tscn
+res://scenes/levels/menu.tscn
+res://scenes/entities/player.tscn
+res://assets/audio/default_bus_layout.tres
+res://scenes/entities/message.tscn
+res://scripts/MultiplayerController.gd
+res://scripts/fakeWall.gd
+res://scripts/messageManager.gd
