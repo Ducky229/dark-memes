@@ -9,7 +9,7 @@ func _ready():
 func interact():
 	for body in $Area3D.get_overlapping_bodies():
 			if body.has_method("display_message"):
-				body.display_wroten_message(text)
+				body.display_message(text)
 				player = body
 func _process(_delta):
 	if player != null:

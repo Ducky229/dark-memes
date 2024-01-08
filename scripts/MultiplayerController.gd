@@ -9,6 +9,8 @@ func _ready():
 	multiplayer.peer_disconnected.connect(PlayerDisconnected)
 	multiplayer.connected_to_server.connect(connected_to_server)
 	multiplayer.connection_failed.connect(connection_failed)
+	
+	# Console server
 	if "--server" in OS.get_cmdline_args():
 		hostGame()
 	# --server --headless in console for dedicaded server

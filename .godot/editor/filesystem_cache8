@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1704738667
+::res://::1704745606
 README.md::TextFile::-1::1704725081::0::1::::<><>::
 ::res://assets/::1704738365
 ::res://assets/audio/::1704738526
@@ -24,7 +24,7 @@ greatsword_0.png::CompressedTexture2D::8034522283221425064::1704555304::17045553
 kick_end.res::Animation::4352248016502246373::1704738629::0::1::::<><>::
 kick_start.res::Animation::7093853855328985605::1704738629::0::1::::<><>::
 mixamo_base.glb::PackedScene::2631899970649006403::1704382550::1704738630::1::::<><>::
-::res://assets/textures/::1704738970
+::res://assets/textures/::1704738983
 flag.png::CompressedTexture2D::249073825010751585::1704738970::1704738983::1::::<><>::
 icon.svg::CompressedTexture2D::3533592208971406701::1704382529::1704738371::1::::<><>::
 LightCast_96.png::CompressedTexture2D::976682495576031171::1704551335::1704551344::1::::<><>::
@@ -115,24 +115,24 @@ texture_11.png::CompressedTexture2D::7347268326846751397::1704382551::1704382552
 texture_12.png::CompressedTexture2D::3318626513048328889::1704382551::1704382552::1::::<><>::
 texture_13.png::CompressedTexture2D::952935486174002101::1704382551::1704382552::1::::<><>::
 ::res://scenes/::1704738335
-::res://scenes/entities/::1704738728
+::res://scenes/entities/::1704745594
 chest.tscn::PackedScene::7467139227794948070::1704738667::0::1::::<><>::res://scripts/chest.gd<>uid://ds66sgvmcxjbc::::res://assets/models/chest/create_0.png<>uid://wljm5qx54ea0::::res://assets/models/chest/create_1.png<>res://scripts/itemPickup.gd<>uid://cuejugwqcko0j::::res://scenes/particles/white sparkles.tscn
 fakeWall.tscn::PackedScene::5605224193223728934::1704738154::0::1::::<><>::res://scripts/fakeWall.gd<>uid://csvnop4qiydrp::::res://assets/textures/grids/Dark/texture_13.png
-message.tscn::PackedScene::1756869554602515233::1704738728::0::1::::<><>::res://scripts/messageManager.gd<>uid://csnjr0q5bcljp::::res://assets/textures/message_decal.png
-player.tscn::PackedScene::7829740297578911297::1704738391::0::1::::<><>::res://scripts/player.gd<>uid://dlxhnsg2yg2up::::res://assets/models/mixamo/kick_end.res<>uid://d0sy4j3x3cc7u::::res://assets/models/greatsword/greatsword.gltf<>uid://hlwb1d12k6ne::::res://assets/models/mixamo/kick_start.res<>uid://c26u1av3sj6gr::::res://assets/fonts/OptimusPrinceps.ttf
-::res://scenes/levels/::1704738729
-main.tscn::PackedScene::1553544050521120710::1704738729::0::1::::<><>::res://scripts/SceneManager.gd<>uid://djs1xcwb07a5v::::res://scenes/entities/player.tscn<>uid://c8arnlq67qi7::::res://assets/textures/grids/Dark/texture_05.png<>uid://b58xv1joypxo5::::res://assets/textures/grids/Orange/texture_09.png<>uid://cm5m7nr7dugjd::::res://assets/textures/grids/Purple/texture_09.png<>uid://dyshw81wmob45::::res://assets/textures/grids/Green/texture_10.png<>uid://0bbnc6ojjbu4::::res://scenes/entities/message.tscn<>uid://csvnop4qiydrp::::res://assets/textures/grids/Dark/texture_13.png<>uid://dmuldpkk0waic::::res://assets/textures/grids/Dark/texture_03.png<>uid://cl4hhuntx7jk5::::res://scenes/entities/fakeWall.tscn
-menu.tscn::PackedScene::9006692840901161861::1704738356::0::1::::<><>::res://scripts/MultiplayerController.gd
+message.tscn::PackedScene::1756869554602515233::1704740546::0::1::::<><>::res://scripts/messageManager.gd<>uid://csnjr0q5bcljp::::res://assets/textures/message_decal.png
+player.tscn::PackedScene::7829740297578911297::1704745594::0::1::::<><>::res://scripts/player.gd<>uid://b3ai5hvx1v2ej::::res://assets/models/mixamo/kick_end.res<>uid://c8ck0bqiapmr2::::res://assets/models/mixamo/kick_start.res<>uid://c26u1av3sj6gr::::res://assets/fonts/OptimusPrinceps.ttf
+::res://scenes/levels/::1704745594
+main.tscn::PackedScene::1553544050521120710::1704745593::0::1::::<><>::res://scripts/SceneManager.gd<>uid://djs1xcwb07a5v::::res://scenes/entities/player.tscn<>uid://c8arnlq67qi7::::res://assets/textures/grids/Dark/texture_05.png<>uid://b58xv1joypxo5::::res://assets/textures/grids/Orange/texture_09.png<>uid://cm5m7nr7dugjd::::res://assets/textures/grids/Purple/texture_09.png<>uid://dyshw81wmob45::::res://assets/textures/grids/Green/texture_10.png<>uid://0bbnc6ojjbu4::::res://scenes/entities/message.tscn<>uid://csvnop4qiydrp::::res://assets/textures/grids/Dark/texture_13.png<>uid://dmuldpkk0waic::::res://assets/textures/grids/Dark/texture_03.png<>uid://dswhegq2cyu0::::res://assets/textures/flag.png<>uid://cl4hhuntx7jk5::::res://scenes/entities/fakeWall.tscn
+menu.tscn::PackedScene::9006692840901161861::1704745594::0::1::::<><>::res://scripts/MultiplayerController.gd
 ::res://scenes/particles/::1704738254
 black ashes.tscn::PackedScene::5169225133561287638::1704737926::0::1::::<><>::
 white sparkles.tscn::PackedScene::6185458269831932547::1704555791::0::1::::<><>::uid://n6d22u7iv4e6::::res://assets/textures/LightCast_96.png
-::res://scripts/::1704738667
+::res://scripts/::1704745591
 chest.gd::GDScript::-1::1704737487::0::1::::<>Node3D<>::
-fakeWall.gd::GDScript::-1::1704738069::0::1::::<>StaticBody3D<>::
+fakeWall.gd::GDScript::-1::1704739254::0::1::::<>StaticBody3D<>::
 FastMethods.gd::GDScript::-1::1704737770::0::1::::<>Node<>::
 GameManager.gd::GDScript::-1::1704736762::0::1::::<>Node<>::
 itemPickup.gd::GDScript::-1::1704736651::0::1::::<>Node3D<>::
-messageManager.gd::GDScript::-1::1704724651::0::1::::<>Node3D<>::
-MultiplayerController.gd::GDScript::-1::1704735566::0::1::::<>Control<>::
-player.gd::GDScript::-1::1704737887::0::1::::<>CharacterBody3D<>::
+messageManager.gd::GDScript::-1::1704742788::0::1::::<>Node3D<>::
+MultiplayerController.gd::GDScript::-1::1704739144::0::1::::<>Control<>::
+player.gd::GDScript::-1::1704745591::0::1::::<>CharacterBody3D<>::
 SceneManager.gd::GDScript::-1::1704736123::0::1::::<>Node3D<>::
