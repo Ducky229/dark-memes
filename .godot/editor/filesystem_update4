@@ -1,9 +1,8 @@
+res://scenes/multiplayer_scene.tscn
+res://MultiplayerController.gd
 res://scenes/main.tscn
 res://scenes/player.tscn
 res://scenes/wall_disappear_particles.tscn
 res://scenes/static_body_3d_2.tscn
 res://scripts/player.gd
-res://assets/models/kick.res
-res://assets/models/kick_start.res
-res://assets/models/kick_end.res
-res://scripts/message.gd
+res://scripts/SceneManager.gd

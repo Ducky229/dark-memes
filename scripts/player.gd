@@ -9,10 +9,14 @@ extends CharacterBody3D
 @onready var kick_hitbox = $KickHitbox
 @onready var message = preload("res://scenes/static_body_3d_2.tscn")
 var SPEED = 3
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 6.5
 
 var walking_speed = 3.0
 var running_speed = 5.0
+
+var health = 100
+var stamina = 100
+var dead = false
 
 var lerp_speed = 10.0
 
@@ -31,91 +35,127 @@ var label_visible = false
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	
 func _input(event):
-	if event is InputEventMouseMotion and not ext_hud_open:
-		rotate_y(deg_to_rad(-event.relative.x * sens_horizontal))
-		visuals.rotate_y(deg_to_rad(event.relative.x * sens_horizontal))
-		camera_mount.rotate_x(deg_to_rad(event.relative.y * sens_vertical))
-		camera_mount.rotation.x = clamp(camera_mount.rotation.x, deg_to_rad(-89), deg_to_rad(45))
-func _physics_process(delta):
-	
-	
-	
-	if !anim.is_playing() and not ext_hud_open:
-		is_locked = false
-	
-	if Input.is_action_just_pressed("interaction") and not ext_hud_open:
-		for body in interaction_hitbox.get_overlapping_bodies():
-			if body.has_method("interact"):
-				body.interact()
-			
-				
-	
-	if Input.is_action_just_pressed("kick") and is_on_floor() and not ext_hud_open:
-		if anim.current_animation != "kick_start" or anim.current_animation != "kick_end":
-			anim.play("kick_start")
-			is_locked = true
-			await anim.animation_finished
-			for body in kick_hitbox.get_overlapping_bodies():
-				if body.has_method("hit"):
-					body.hit()
-			anim.queue("kick_end")
-			#var timer_1 = get_tree().create_timer(0.4)
-			#await timer_1.timeout
-			
-	# Handle running
-	
-	if  Input.is_action_pressed("running") and is_on_floor():
-		SPEED = running_speed
-		running = true
-	else:
-		SPEED = walking_speed
-		running = false
-	
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
+	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		if event is InputEventMouseMotion and not ext_hud_open:
+			rotate_y(deg_to_rad(-event.relative.x * sens_horizontal))
+			visuals.rotate_y(deg_to_rad(event.relative.x * sens_horizontal))
+			camera_mount.rotate_x(deg_to_rad(event.relative.y * sens_vertical))
+			camera_mount.rotation.x = clamp(camera_mount.rotation.x, deg_to_rad(-89), deg_to_rad(45))
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	
-	if Input.is_action_just_pressed("message"):
-		anim.stop()
-		# Dont work properly
-		if $WriteMessageHitbox.body_exited:
-			print("true")
-			$Control/WriteMessage_Message.set("visible", true)
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func regenerate_stamina(delta):
+	await get_tree().create_timer(1).timeout
+	stamina += delta * 5
+
+func hit(damage):
+	health-=damage
+
+func death():
+	move_and_slide()
+	if health <= 0:
+		if anim.current_animation != "knock_down":
 			is_locked = true
+			anim.play("knock_down")
+			await anim.animation_finished
+			dead = true
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			ext_hud_open = true
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("left", "right", "forward", "backward")
-	#if input_dir != Vector2.ZERO:
-		#$Control/MessageBox.set("visible", false)
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		if !is_locked:
+			$Control/DeathScreen.show()
+			await get_tree().create_timer(5).timeout
+			$Control/DeathScreen.show()
+
+func _physics_process(delta):
+	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		if not is_on_floor():
+				velocity.y -= gravity * delta
+		if !dead:
+			death()
+			$Control/HealthBar.value = health
+			$Control/StaminaBar.value = stamina
+			#hit(delta * 50)
 			if running:
-				if anim.current_animation != "running":
-					anim.play("running")
+				stamina -= delta * 10
 			else:
-				if anim.current_animation != "walking":
-					anim.play("walking")
-			visuals.look_at(position + direction)
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		if !is_locked:
-			if anim.current_animation != "idle":
-				anim.play("idle")
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-	
-	if !is_locked:
-		move_and_slide()
+				if !Input.is_action_pressed("running"):
+					regenerate_stamina(delta)
+			
+			if !anim.is_playing() and not ext_hud_open:
+				is_locked = false
+			
+			if Input.is_action_just_pressed("interaction") and not ext_hud_open:
+				for body in interaction_hitbox.get_overlapping_bodies():
+					if body.has_method("interact"):
+						body.interact()
+					
+						
+			
+			if Input.is_action_just_pressed("kick") and is_on_floor() and not ext_hud_open:
+				if anim.current_animation != "kick_start" or anim.current_animation != "kick_end":
+					anim.play("kick_start")
+					is_locked = true
+					await anim.animation_finished
+					for body in kick_hitbox.get_overlapping_bodies():
+						if body.has_method("hit"):
+							body.hit(25)
+					anim.queue("kick_end")
+					#var timer_1 = get_tree().create_timer(0.4)
+					#await timer_1.timeout
+					
+			# Handle running
+			
+			if  Input.is_action_pressed("running") and is_on_floor() and stamina > 0:
+				SPEED = running_speed
+				running = true
+			else:
+				SPEED = walking_speed
+				running = false
+			
+			# Add the gravity.
+			
+
+			# Handle jump.
+			if Input.is_action_just_pressed("jump") and is_on_floor():
+				velocity.y = JUMP_VELOCITY
+			
+			if Input.is_action_just_pressed("message"):
+				anim.stop()
+				# Dont work properly
+				if $WriteMessageHitbox.body_exited:
+					print("true")
+					$Control/WriteMessage_Message.set("visible", true)
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+					is_locked = true
+					ext_hud_open = true
+			# Get the input direction and handle the movement/deceleration.
+			# As good practice, you should replace UI actions with custom gameplay actions.
+			var input_dir = Input.get_vector("left", "right", "forward", "backward")
+			#if input_dir != Vector2.ZERO:
+				#$Control/MessageBox.set("visible", false)
+			var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+			if direction:
+				if !is_locked:
+					if running:
+						if anim.current_animation != "running":
+							anim.play("running")
+					else:
+						if anim.current_animation != "walking":
+							anim.play("walking")
+					visuals.look_at(position + direction)
+				velocity.x = direction.x * SPEED
+				velocity.z = direction.z * SPEED
+			else:
+				if !is_locked:
+					if anim.current_animation != "idle":
+						anim.play("idle")
+				velocity.x = move_toward(velocity.x, 0, SPEED)
+				velocity.z = move_toward(velocity.z, 0, SPEED)
+			
+			if !is_locked:
+				move_and_slide()
 
 func write_message(mesaga):
 	var m = message.instantiate()
