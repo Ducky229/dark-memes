@@ -1,5 +1,6 @@
 res://scenes/levels/main.tscn
 res://scenes/entities/player.tscn
 res://scenes/levels/menu.tscn
+res://scripts/fakeWall.gd
 res://scripts/player.gd
-res://scripts/MultiplayerController.gd
+res://older_script.cs

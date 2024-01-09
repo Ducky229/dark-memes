@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://wesv46s6026e"]
+[gd_scene load_steps=28 format=3 uid="uid://wesv46s6026e"]
 
 [ext_resource type="Script" path="res://scripts/SceneManager.gd" id="1_aavsv"]
 [ext_resource type="PackedScene" uid="uid://djs1xcwb07a5v" path="res://scenes/entities/player.tscn" id="2_w35y5"]
@@ -83,6 +83,24 @@ billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_2guah"]
 material = SubResource("StandardMaterial3D_f2s8s")
+
+[sub_resource type="GDScript" id="GDScript_3mqir"]
+script/source = "extends Area3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	for body in get_overlapping_bodies():
+		if body.has_method(\"hit\"):
+			body.hit(10 * delta)
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jye10"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_aavsv")
@@ -187,3 +205,9 @@ mesh = SubResource("QuadMesh_2guah")
 
 [node name="Message" parent="Map/Entities" instance=ExtResource("7_alt4v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 6.5)
+
+[node name="Area3D" type="Area3D" parent="."]
+script = SubResource("GDScript_3mqir")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_jye10")

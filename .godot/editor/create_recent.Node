@@ -1,3 +1,5 @@
+CollisionShape3D
+Area3D
 Control
 ColorRect
 Node3D
@@ -10,5 +12,3 @@ ProgressBar
 TextureRect
 NinePatchRect
 SubViewport
-CollisionShape3D
-Area3D

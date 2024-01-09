@@ -1,7 +1,7 @@
 extends Control
 
-@export var Address = "127.0.0.1"
-@export var port = 8910
+@export var Address = "192.168.43.113"
+@export var port = 8910	
 var peer
 # Called when the node enters the scene tree for the first time.
 func _ready():

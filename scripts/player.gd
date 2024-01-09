@@ -256,13 +256,13 @@ func handle_kick(_damage):
 	if Input.is_action_just_pressed("kick"):
 		is_locked = true
 		startAnimation("kick")
-		#await anim.animation_finished
-		#for body in kick_hitbox.get_overlapping_bodies():
-		#	if body.has_method("hit"):
-		#		body.hit(_damage)
+		for body in kick_hitbox.get_overlapping_bodies():
+			if body.has_method("hit"):
+				body.hit.rpc(_damage)
 		await anim.animation_finished
 		is_locked = false
 
+@rpc("any_peer", "call_local")
 func hit(_damage):
 	health -= _damage
 	# Debug string
