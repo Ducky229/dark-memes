@@ -80,3 +80,7 @@ func _on_join_button_down():
 func _on_start_button_down():
 	StartGame.rpc()
 	pass # Replace with function body.
+
+
+func _on_button_pressed():
+	Address = $ipaddress.text
