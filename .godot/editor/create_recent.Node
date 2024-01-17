@@ -1,10 +1,11 @@
+MarginContainer
+Label
+Control
 CollisionShape3D
 Area3D
-Control
 ColorRect
 Node3D
 MeshInstance3D
-Label
 MultiplayerSynchronizer
 MultiMeshInstance3D
 Button

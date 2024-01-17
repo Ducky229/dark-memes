@@ -1,0 +1,18 @@
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\bin\Debug\tps tutor 2.deps.json
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\bin\Debug\tps tutor 2.runtimeconfig.json
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\bin\Debug\tps tutor 2.dll
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\bin\Debug\tps tutor 2.pdb
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\bin\Debug\GodotSharp.dll
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\obj\Debug\tps tutor 2.csproj.AssemblyReference.cache
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\obj\Debug\tps tutor 2.GeneratedMSBuildEditorConfig.editorconfig
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\obj\Debug\tps tutor 2.AssemblyInfoInputs.cache
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\obj\Debug\tps tutor 2.AssemblyInfo.cs
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\obj\Debug\tps tutor 2.csproj.CoreCompileInputs.cache
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\obj\Debug\tps tutor 2.sourcelink.json
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\obj\Debug\tps tutor 2.csproj.CopyComplete
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\obj\Debug\tps tutor 2.dll
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\obj\Debug\refint\tps tutor 2.dll
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\obj\Debug\tps tutor 2.pdb
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\obj\Debug\tps tutor 2.genruntimeconfig.cache
+E:\Александр\Documents\SISKIGames\Godot Projects\dark-memes\.godot\mono\temp\obj\Debug\ref\tps tutor 2.dll

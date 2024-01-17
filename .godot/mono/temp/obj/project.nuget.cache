@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "3A8fm6nbHVgWWYIo28CFO8JqaTPXyzQ/b9PcFEY0hbJToXi3B7RcNQ3fwpmpqRpdAzMSWA5TaJu36RFJw+NPlg==",
+  "success": true,
+  "projectFilePath": "E:\\Александр\\Documents\\SISKIGames\\Godot Projects\\dark-memes\\tps tutor 2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Ducky\\.nuget\\packages\\godot.sourcegenerators\\4.2.1\\godot.sourcegenerators.4.2.1.nupkg.sha512",
+    "C:\\Users\\Ducky\\.nuget\\packages\\godotsharp\\4.2.1\\godotsharp.4.2.1.nupkg.sha512",
+    "C:\\Users\\Ducky\\.nuget\\packages\\godotsharpeditor\\4.2.1\\godotsharpeditor.4.2.1.nupkg.sha512",
+    "C:\\Users\\Ducky\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.26\\microsoft.netcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\Ducky\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.26\\microsoft.windowsdesktop.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\Ducky\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.26\\microsoft.aspnetcore.app.ref.6.0.26.nupkg.sha512"
+  ],
+  "logs": []
+}

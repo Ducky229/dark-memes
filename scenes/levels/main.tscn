@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://wesv46s6026e"]
+[gd_scene load_steps=29 format=3 uid="uid://wesv46s6026e"]
 
 [ext_resource type="Script" path="res://scripts/SceneManager.gd" id="1_aavsv"]
 [ext_resource type="PackedScene" uid="uid://djs1xcwb07a5v" path="res://scenes/entities/player.tscn" id="2_w35y5"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dmuldpkk0waic" path="res://assets/textures/grids/Dark/texture_03.png" id="9_66p60"]
 [ext_resource type="Texture2D" uid="uid://dswhegq2cyu0" path="res://assets/textures/flag.png" id="9_858bv"]
 [ext_resource type="PackedScene" uid="uid://cl4hhuntx7jk5" path="res://scenes/entities/fakeWall.tscn" id="10_ni6q6"]
+[ext_resource type="Script" path="res://scripts/Version display.gd" id="12_2tnrj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5kbj0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -211,3 +212,26 @@ script = SubResource("GDScript_3mqir")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_jye10")
+
+[node name="Version display" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_2tnrj")
+
+[node name="MarginContainer" type="MarginContainer" parent="Version display"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Version display/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "version "
