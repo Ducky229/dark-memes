@@ -135,7 +135,7 @@ func _physics_process(delta):
 		
 		# Combat
 		
-		var damage =  25
+		var damage =  50
 		
 		handle_kick(damage)
 		

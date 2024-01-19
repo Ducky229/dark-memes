@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://wesv46s6026e"]
+[gd_scene load_steps=41 format=3 uid="uid://wesv46s6026e"]
 
 [ext_resource type="Script" path="res://scripts/SceneManager.gd" id="1_aavsv"]
 [ext_resource type="PackedScene" uid="uid://djs1xcwb07a5v" path="res://scenes/entities/player.tscn" id="2_w35y5"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dswhegq2cyu0" path="res://assets/textures/flag.png" id="9_858bv"]
 [ext_resource type="PackedScene" uid="uid://cl4hhuntx7jk5" path="res://scenes/entities/fakeWall.tscn" id="10_ni6q6"]
 [ext_resource type="Script" path="res://scripts/Version display.gd" id="12_2tnrj"]
+[ext_resource type="Script" path="res://scripts/Enimy.gd" id="12_n2qx5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5kbj0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -21,9 +22,11 @@ ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 sky_material = SubResource("ProceduralSkyMaterial_5kbj0")
 
 [sub_resource type="Environment" id="Environment_3qpo8"]
-background_mode = 2
+background_energy_multiplier = 0.0
 sky = SubResource("Sky_0phqf")
 tonemap_mode = 2
+tonemap_exposure = 0.61
+tonemap_white = 1.2
 ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
@@ -31,8 +34,10 @@ sdfgi_enabled = true
 sdfgi_use_occlusion = true
 glow_enabled = true
 fog_enabled = true
-fog_light_color = Color(0.435294, 0.435294, 0.435294, 1)
-fog_density = 0.0025
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.041
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.407843, 0.407843, 0.407843, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_foyjr"]
 albedo_texture = ExtResource("3_loipk")
@@ -85,6 +90,80 @@ billboard_mode = 1
 [sub_resource type="QuadMesh" id="QuadMesh_2guah"]
 material = SubResource("StandardMaterial3D_f2s8s")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vygfh"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_arvla"]
+material = SubResource("StandardMaterial3D_vygfh")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n147l"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0310o"]
+radius = 10.0
+
+[sub_resource type="PrismMesh" id="PrismMesh_xqfwy"]
+size = Vector3(0.755, 1, 0.68)
+
+[sub_resource type="Animation" id="Animation_pwng7"]
+resource_name = "attack"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.42588, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yu2gi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t4klw"]
+resource_name = "back"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.42588, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h4wr2"]
+_data = {
+"RESET": SubResource("Animation_yu2gi"),
+"attack": SubResource("Animation_pwng7"),
+"back": SubResource("Animation_t4klw")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_44jrn"]
+size = Vector3(0.1, 1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0rpuo"]
+size = Vector3(1, 2, 1)
+
 [sub_resource type="GDScript" id="GDScript_3mqir"]
 script/source = "extends Area3D
 
@@ -109,6 +188,8 @@ PlayerScene = ExtResource("2_w35y5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+visible = false
+light_energy = 0.1
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -207,7 +288,48 @@ mesh = SubResource("QuadMesh_2guah")
 [node name="Message" parent="Map/Entities" instance=ExtResource("7_alt4v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 6.5)
 
+[node name="Enimy" type="CharacterBody3D" parent="Map/Entities"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6734, 1, -10.0148)
+script = ExtResource("12_n2qx5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Entities/Enimy"]
+mesh = SubResource("CapsuleMesh_arvla")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Entities/Enimy"]
+shape = SubResource("CapsuleShape3D_n147l")
+
+[node name="Area3D" type="Area3D" parent="Map/Entities/Enimy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Entities/Enimy/Area3D"]
+shape = SubResource("SphereShape3D_0310o")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Map/Entities/Enimy"]
+transform = Transform3D(-4.37114e-08, -4.37114e-08, 1, -1, 1.91069e-15, -4.37114e-08, 0, -1, -4.37114e-08, 0, 0.3, -0.5)
+mesh = SubResource("PrismMesh_xqfwy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Entities/Enimy"]
+libraries = {
+"": SubResource("AnimationLibrary_h4wr2")
+}
+playback_default_blend_time = 0.1
+
+[node name="Node3D" type="Node3D" parent="Map/Entities/Enimy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50135, 0, -0.353666)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Map/Entities/Enimy/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.379869, 0)
+mesh = SubResource("BoxMesh_44jrn")
+skeleton = NodePath("../..")
+
+[node name="Area3D2" type="Area3D" parent="Map/Entities/Enimy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Entities/Enimy/Area3D2"]
+shape = SubResource("BoxShape3D_0rpuo")
+
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
 script = SubResource("GDScript_3mqir")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
@@ -235,3 +357,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "version "
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 1)
+shadow_enabled = true

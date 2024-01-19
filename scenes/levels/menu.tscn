@@ -12,12 +12,14 @@ grow_vertical = 2
 script = ExtResource("1_uto2o")
 
 [node name="ipaddress" type="LineEdit" parent="."]
+layout_mode = 0
 offset_left = 127.0
 offset_top = 98.0
 offset_right = 353.0
 offset_bottom = 129.0
 
 [node name="Label2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 41.0
 offset_top = 101.0
 offset_right = 121.0

@@ -84,3 +84,5 @@ func _on_start_button_down():
 
 func _on_button_pressed():
 	Address = $ipaddress.text
+	
+	
