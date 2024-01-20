@@ -1,5 +1,6 @@
 extends Control
-
+@onready var audio_player = $AudioStreamPlayer
+const main_menu_music = preload("res://assets/audio/music/Main.wav")
 @export var Address = "192.168.43.113"
 @export var port = 8910	
 var peer
@@ -14,7 +15,8 @@ func _ready():
 	if "--server" in OS.get_cmdline_args():
 		hostGame()
 	# --server --headless in console for dedicaded server
-	pass # Replace with function body.
+	audio_player.stream = main_menu_music
+	audio_player.play()
 
 
 func PlayerConnected(id):
@@ -49,6 +51,7 @@ func connection_failed():
 @rpc("any_peer", "call_local")
 
 func StartGame():
+	audio_player.queue_free()
 	var scene = load("res://scenes/levels/main.tscn").instantiate()
 	get_tree().root.add_child(scene)
 	self.hide()

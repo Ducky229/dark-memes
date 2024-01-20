@@ -1,12 +1,15 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1705702052
+::res://::1705707213
+export_presets.cfg::TextFile::-1::1705707213::0::1::::<><>::
 README.md::TextFile::-1::1705094131::0::1::::<><>::
 ::res://assets/::1705094131
-::res://assets/audio/::1705094131
-default_bus_layout.tres::AudioBusLayout::4907441402866005453::1705094131::0::1::::<><>::
+::res://assets/audio/::1705708462
+default_bus_layout.tres::AudioBusLayout::4907441402866005453::1705708377::0::1::::<><>::
 ::res://assets/audio/chest/::1705093671
 Chest_closing.wav::AudioStreamWAV::1628534684164005545::1705093671::1705093671::1::::<><>::
 Chest_open.wav::AudioStreamWAV::8171133664603525489::1705093671::1705093671::1::::<><>::
+::res://assets/audio/music/::1705708466
+Main.wav::AudioStreamWAV::7581692673292420226::1705708466::1705708468::1::::<><>::
 ::res://assets/fonts/::1705094131
 OptimusPrinceps.ttf::FontFile::6733196660223314561::1705094131::1705094131::1::::<><>::
 ::res://assets/models/::1705094131
@@ -115,25 +118,26 @@ texture_11.png::CompressedTexture2D::7347268326846751397::1705093671::1705093671
 texture_12.png::CompressedTexture2D::3318626513048328889::1705093671::1705093671::1::::<><>::
 texture_13.png::CompressedTexture2D::952935486174002101::1705093671::1705093671::1::::<><>::
 ::res://scenes/::1705094132
-::res://scenes/entities/::1705526503
+::res://scenes/entities/::1705706945
 chest.tscn::PackedScene::7467139227794948070::1705094131::0::1::::<><>::res://scripts/chest.gd<>uid://ds66sgvmcxjbc::::res://assets/models/chest/create_0.png<>uid://wljm5qx54ea0::::res://assets/models/chest/create_1.png<>res://scripts/itemPickup.gd<>uid://cuejugwqcko0j::::res://scenes/particles/white sparkles.tscn
 fakeWall.tscn::PackedScene::5605224193223728934::1705094131::0::1::::<><>::res://scripts/fakeWall.gd<>uid://csvnop4qiydrp::::res://assets/textures/grids/Dark/texture_13.png
-message.tscn::PackedScene::1756869554602515233::1705094131::0::1::::<><>::res://scripts/messageManager.gd<>uid://csnjr0q5bcljp::::res://assets/textures/message_decal.png
-player.tscn::PackedScene::7829740297578911297::1705526503::0::1::::<><>::res://scripts/player.gd<>uid://b3ai5hvx1v2ej::::res://assets/models/mixamo/kick_end.res<>uid://c8ck0bqiapmr2::::res://assets/models/mixamo/kick_start.res<>uid://c26u1av3sj6gr::::res://assets/fonts/OptimusPrinceps.ttf
-::res://scenes/levels/::1705526503
-main.tscn::PackedScene::1553544050521120710::1705526501::0::1::::<><>::res://scripts/SceneManager.gd<>uid://djs1xcwb07a5v::::res://scenes/entities/player.tscn<>uid://c8arnlq67qi7::::res://assets/textures/grids/Dark/texture_05.png<>uid://b58xv1joypxo5::::res://assets/textures/grids/Orange/texture_09.png<>uid://cm5m7nr7dugjd::::res://assets/textures/grids/Purple/texture_09.png<>uid://dyshw81wmob45::::res://assets/textures/grids/Green/texture_10.png<>uid://0bbnc6ojjbu4::::res://scenes/entities/message.tscn<>uid://csvnop4qiydrp::::res://assets/textures/grids/Dark/texture_13.png<>uid://dmuldpkk0waic::::res://assets/textures/grids/Dark/texture_03.png<>uid://dswhegq2cyu0::::res://assets/textures/flag.png<>uid://cl4hhuntx7jk5::::res://scenes/entities/fakeWall.tscn<>res://scripts/Version display.gd
-menu.tscn::PackedScene::9006692840901161861::1705526503::0::1::::<><>::res://scripts/MultiplayerController.gd
+message.tscn::PackedScene::1756869554602515233::1705706945::0::1::::<><>::res://scripts/messageManager.gd<>uid://csnjr0q5bcljp::::res://assets/textures/message_decal.png
+player.tscn::PackedScene::7829740297578911297::1705706944::0::1::::<><>::res://scripts/player.gd<>uid://b3ai5hvx1v2ej::::res://assets/models/mixamo/kick_end.res<>uid://c8ck0bqiapmr2::::res://assets/models/mixamo/kick_start.res<>uid://c26u1av3sj6gr::::res://assets/fonts/OptimusPrinceps.ttf
+::res://scenes/levels/::1705708400
+main.tscn::PackedScene::1553544050521120710::1705706943::0::1::::<><>::res://scripts/SceneManager.gd<>uid://djs1xcwb07a5v::::res://scenes/entities/player.tscn<>uid://c8arnlq67qi7::::res://assets/textures/grids/Dark/texture_05.png<>uid://b58xv1joypxo5::::res://assets/textures/grids/Orange/texture_09.png<>uid://cm5m7nr7dugjd::::res://assets/textures/grids/Purple/texture_09.png<>uid://dyshw81wmob45::::res://assets/textures/grids/Green/texture_10.png<>uid://0bbnc6ojjbu4::::res://scenes/entities/message.tscn<>uid://csvnop4qiydrp::::res://assets/textures/grids/Dark/texture_13.png<>uid://dmuldpkk0waic::::res://assets/textures/grids/Dark/texture_03.png<>uid://dswhegq2cyu0::::res://assets/textures/flag.png<>uid://cl4hhuntx7jk5::::res://scenes/entities/fakeWall.tscn<>res://scripts/Version display.gd<>res://scripts/Enimy.gd
+menu.tscn::PackedScene::9006692840901161861::1705708400::0::1::::<><>::res://scripts/MultiplayerController.gd
 ::res://scenes/particles/::1705094132
 black ashes.tscn::PackedScene::5169225133561287638::1705094132::0::1::::<><>::
 white sparkles.tscn::PackedScene::6185458269831932547::1705094132::0::1::::<><>::uid://n6d22u7iv4e6::::res://assets/textures/LightCast_96.png
-::res://scripts/::1705526469
+::res://scripts/::1705705670
 chest.gd::GDScript::-1::1705094132::0::1::::<>Node3D<>::
+Enimy.gd::GDScript::-1::1705705575::0::1::::<>CharacterBody3D<>::
 fakeWall.gd::GDScript::-1::1705094132::0::1::::<>StaticBody3D<>::
 FastMethods.gd::GDScript::-1::1705094132::0::1::::<>Node<>::
 GameManager.gd::GDScript::-1::1705094132::0::1::::<>Node<>::
 itemPickup.gd::GDScript::-1::1705094132::0::1::::<>Node3D<>::
 messageManager.gd::GDScript::-1::1705094132::0::1::::<>Node3D<>::
-MultiplayerController.gd::GDScript::-1::1705526469::0::1::::<>Control<>::
-player.gd::GDScript::-1::1705094132::0::1::::<>CharacterBody3D<>::
+MultiplayerController.gd::GDScript::-1::1705702068::0::1::::<>Control<>::
+player.gd::GDScript::-1::1705704242::0::1::::<>CharacterBody3D<>::
 SceneManager.gd::GDScript::-1::1705094132::0::1::::<>Node3D<>::
-Version display.gd::GDScript::-1::1705526296::0::1::::<>Control<>::
+Version display.gd::GDScript::-1::1705705670::0::1::::<>Control<>::

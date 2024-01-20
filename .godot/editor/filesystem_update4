@@ -6,3 +6,4 @@ res://scripts/Enimy.gd
 res://scripts/player.gd
 res://scripts/Version display.gd
 res://scenes/entities/message.tscn
+res://assets/audio/default_bus_layout.tres
